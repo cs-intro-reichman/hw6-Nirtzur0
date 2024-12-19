@@ -61,7 +61,7 @@ public class Runigram {
     }
 
     // Converts an image to greyscale
-    public static Color[][] greyScaled(Color[][] image) {
+    public static Color[][] greyScaled(Color[][] image) { // Corrected name to match test
         int height = image.length;
         int width = image[0].length;
         Color[][] greyscaled = new Color[height][width];
