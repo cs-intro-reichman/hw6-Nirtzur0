@@ -114,6 +114,13 @@ public class Runigram {
 		return blended;
 	}
 
+	private static Color blend(Color c1, Color c2, double alpha) {
+		int r = (int) (alpha * c1.getRed() + (1 - alpha) * c2.getRed());
+		int g = (int) (alpha * c1.getGreen() + (1 - alpha) * c2.getGreen());
+		int b = (int) (alpha * c1.getBlue() + (1 - alpha) * c2.getBlue());
+		return new Color(r, g, b);
+	}
+
     public static void display(Color[][] image) {
         int rows = image.length;
         int cols = image[0].length;
