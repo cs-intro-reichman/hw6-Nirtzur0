@@ -1,19 +1,28 @@
 public class Editor1 {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         String filename = args[0];
         String operation = args[1];
 
         Color[][] image = Runigram.read(filename);
-        Runigram.display(image);
+        Runigram.print(image);
 
-        Color[][] result = switch (operation) {
-            case "fh" -> Runigram.flippedHorizontally(image);
-            case "fv" -> Runigram.flippedVertically(image);
-            case "gs" -> Runigram.greyScaled(image);
-            default -> throw new IllegalArgumentException("Invalid operation: " + operation);
-        };
+        Color[][] processedImage = null;
 
-        StdDraw.pause(2000);
-        Runigram.display(result);
+        switch (operation) {
+            case "fh":
+                processedImage = Runigram.flippedHorizontally(image);
+                break;
+            case "fv":
+                processedImage = Runigram.flippedVertically(image);
+                break;
+            case "gs":
+                processedImage = Runigram.greyScaled(image);
+                break;
+            default:
+                System.out.println("Invalid operation");
+                System.exit(1);
+        }
+
+        Runigram.print(processedImage);
     }
 }
