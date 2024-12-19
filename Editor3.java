@@ -7,6 +7,8 @@ public class Editor3 {
         Color[][] sourceImage = Runigram.read(sourceFile);
         Color[][] targetImage = Runigram.read(targetFile);
 
+        Runigram.display(sourceImage);
+
         for (int step = 0; step <= steps; step++) {
             double alpha = (double) (steps - step) / steps;
             Color[][] blended = Runigram.blend(sourceImage, targetImage, alpha);

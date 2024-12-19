@@ -5,9 +5,10 @@ public class Editor2 {
         int newHeight = Integer.parseInt(args[2]);
 
         Color[][] image = Runigram.read(filename);
-        Runigram.print(image);
-
         Color[][] scaledImage = Runigram.scaled(image, newWidth, newHeight);
-        Runigram.print(scaledImage);
+
+        Runigram.display(image);
+        StdDraw.pause(1000);
+        Runigram.display(scaledImage);
     }
 }
