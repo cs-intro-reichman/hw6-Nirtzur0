@@ -56,19 +56,19 @@ public class Runigram {
         return flipped;
     }
 
-    public static Color[][] greyScaled(Color[][] image) {
-        int rows = image.length;
-        int cols = image[0].length;
-        Color[][] grey = new Color[rows][cols];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                Color pixel = image[i][j];
-                int luminance = (int) (0.299 * pixel.getRed() + 0.587 * pixel.getGreen() + 0.114 * pixel.getBlue());
-                grey[i][j] = new Color(luminance, luminance, luminance);
-            }
-        }
-        return grey;
-    }
+	public static Color[][] grayScaled(Color[][] image) {
+		int rows = image.length;
+		int cols = image[0].length;
+		Color[][] gray = new Color[rows][cols];
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
+				Color pixel = image[i][j];
+				int luminance = (int) (0.299 * pixel.getRed() + 0.587 * pixel.getGreen() + 0.114 * pixel.getBlue());
+				gray[i][j] = new Color(luminance, luminance, luminance);
+			}
+		}
+		return gray;
+	}
 
     public static Color[][] scaled(Color[][] image, int newWidth, int newHeight) {
         int rows = image.length;
@@ -102,12 +102,17 @@ public class Runigram {
         }
     }
 
-    private static Color blend(Color c1, Color c2, double alpha) {
-        int r = (int) (alpha * c1.getRed() + (1 - alpha) * c2.getRed());
-        int g = (int) (alpha * c1.getGreen() + (1 - alpha) * c2.getGreen());
-        int b = (int) (alpha * c1.getBlue() + (1 - alpha) * c2.getBlue());
-        return new Color(r, g, b);
-    }
+	public static Color[][] blend(Color[][] image1, Color[][] image2, double alpha) {
+		int rows = image1.length;
+		int cols = image1[0].length;
+		Color[][] blended = new Color[rows][cols];
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
+				blended[i][j] = blend(image1[i][j], image2[i][j], alpha);
+			}
+		}
+		return blended;
+	}
 
     public static void display(Color[][] image) {
         int rows = image.length;
